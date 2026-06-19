@@ -41,7 +41,7 @@ The project is considered complete when:
 ## Project Structure
 
 Bio-Dome/
-│
+
 ├── main.py              # Entry point of application
 
 
@@ -54,7 +54,7 @@ Bio-Dome/
 ├── database.py         # SQLite database handling
 
 
-│
+
 ├── requirements.txt    # Project dependencies
 
 
