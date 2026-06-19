@@ -43,15 +43,33 @@ The project is considered complete when:
 Bio-Dome/
 │
 ├── main.py              # Entry point of application
+
+
 ├── plant.py            # Plant class (handles plant logic and stats)
+
+
 ├── biodome.py          # Core system logic and UI controller
+
+
 ├── database.py         # SQLite database handling
+
+
 │
 ├── requirements.txt    # Project dependencies
+
+
 ├── .env                # Environment variables (NOT pushed to GitHub)
+
+
 ├── .gitignore         # Files ignored by Git
+
+
 ├── README.md          # Project documentation
+
+
 ├── LICENSE            # MIT License file
+
+
 ├── venv/              # Virtual environment (NOT pushed to GitHub)
 
 ---
