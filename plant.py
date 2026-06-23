@@ -15,7 +15,18 @@ class Plant(ABC):
         
  def take_damage(self , amount):
       self.health = max(0, self.health - amount)
- 
+ def heal(self , amount , cost):
+    if self.coins >= cost:
+      self.coins -= cost
+      self.health = min (100 , self.health + amount)
+      return True
+    return False
+ def add_coins(self , amount):
+    self.coins += amount
+ def level_up(self):
+   if self.health >= 80:
+          self.level += 1
+          self.coins += 10
  def status_checker(self):
     if self.health <= 0 :
      return "dead plant"
