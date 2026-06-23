@@ -46,3 +46,34 @@ class Plant(ABC):
 
 
 
+class Orchid(Plant):
+   def grow(self):
+    self.health += 2
+    self.add_coins(2)
+
+class Strawberry(Plant):
+   def grow(self):
+    self.health += 3
+    self.add_coins(3)
+
+class Bonsai(Plant):
+   def grow(self):
+    self.health += 1
+    self.add_coins(1)
+
+class jade_vine(Plant):
+   def grow(self):
+    self.health += 4
+    self.add_coins(4)
+
+plant = Orchid("royal Orchid")
+for i in range(5):
+    plant.grow()
+plant.take_damage(35)
+print(plant.name)
+print(plant.health)
+print(plant.coins)
+
+plant.heal(20 , 10)
+print(f"plant health is {plant.health}")
+print(plant.coins)
