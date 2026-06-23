@@ -21,42 +21,27 @@ class BioDome:
             foreground = "#556B2F",
         )
         self.stats_label.pack(pady=10)
-        tk.Button(
-            self.root,
-            text = "Orchid",
-            command=self.choose_Orchid,
-        ).pack(pady=10)
-        tk.Button(
-            self.root,
-            text = "Strawberry",
-            command=self.choose_Strawberry,
-        ).pack(pady=10)
-        tk.Button(
-            self.root,
-            text = "Bonsai",
-            command=self.choose_Bonsai,
-        ).pack(pady=10)
-        tk.Button(
-            self.root,
-            text = "JadeVine",
-            command=self.choose_JadeVine,
-        ).pack(pady=10)
+        tk.Button(self.root, 
+                  text="Orchid", 
+                  command=lambda: self.choose_plant(Orchid, "Royal Orchid")
+                  ).pack(pady=10)
+        tk.Button(self.root,
+                   text="Strawberry", 
+                   command=lambda: self.choose_plant(Strawberry, "Wild Strawberry")
+                   ).pack(pady=10)
+        tk.Button(self.root,
+                   text="Bonsai", 
+                   command=lambda: self.choose_plant(Bonsai, "Bonsai")
+                   ).pack(pady=10)
+        tk.Button(self.root,
+                   text="JadeVine", 
+                   command=lambda: self.choose_plant(JadeVine, "JadeVine")
+                   ).pack(pady=10)
 
-    def choose_Orchid(self):
-        self.current_plant = Orchid("Royal Orchid")
-        self.update_stats()
 
-    def choose_Strawberry(self):
-        self.current_plant = Strawberry("Strawberry")
-        self.update_stats()
-
-    def choose_JadeVine(self):
-        self.current_plant = JadeVine("JadeVine")
-        self.update_stats()
-    
-    def choose_Bonsai(self):
-        self.current_plant = Bonsai("Bonsai")
-        self.update_stats()
+    def choose_plant(self, plant_class, name):
+     self.current_plant = plant_class(name)
+     self.update_stats()
 
 
     def update_stats(self):
