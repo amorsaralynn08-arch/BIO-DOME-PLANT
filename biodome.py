@@ -59,5 +59,19 @@ class BioDome:
         self.update_stats()
 
 
+    def update_stats(self):
+        self.stats_label.config(
+            text = 
+            f"Name: {self.current_plant.name}\n"
+            f"Health:{self.current_plant.health}\n"
+            f"Level:{self.current_plant.level}\n"
+            f"Coins:{self.current_plant.coins}"
+
+        )
+    def run(self):
+        self.root.mainloop()
+
+
+
 
 
