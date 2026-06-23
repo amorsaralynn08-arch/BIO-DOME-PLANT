@@ -61,19 +61,18 @@ class Bonsai(Plant):
     self.health += 1
     self.add_coins(1)
 
-class jade_vine(Plant):
+class JadeVine(Plant):
    def grow(self):
     self.health += 4
     self.add_coins(4)
 
-plant = Orchid("royal Orchid")
-for i in range(5):
-    plant.grow()
-plant.take_damage(35)
-print(plant.name)
-print(plant.health)
-print(plant.coins)
+plants = [
+    Orchid("Orchid"),
+    Strawberry("Strawberry"),
+    Bonsai("Bonsai"),
+    JadeVine("Jade Vine")
+]
 
-plant.heal(20 , 10)
-print(f"plant health is {plant.health}")
-print(plant.coins)
+for plant in plants:
+    plant.grow()
+    print(plant.name, plant.health, plant.coins)
