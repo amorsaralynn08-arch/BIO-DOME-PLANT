@@ -7,18 +7,18 @@ class BioDome:
         self.root.title("Bio Dome Plant")
         self.root.geometry("500x500")
         self.current_plant = None
-        self.title_label = tk.label(
+        self.title_label = tk.Label(
             self.root ,
             text = "Choose your plant",
             font=("Arial" , 18),
-            background = "sky-blue"
+            background = "skyblue"
 
               )
         self.title_label.pack(pady = 10)
         self.stats_label = tk.Label(
             self.root , 
             text = "No plant has been selected!",
-            foreground = 556B2F,
+            foreground = "#556B2F",
         )
         self.stats_label.pack(pady=10)
         tk.Button(
@@ -71,7 +71,9 @@ class BioDome:
     def run(self):
         self.root.mainloop()
 
-
+if __name__ == "__main__":
+        app = BioDome()
+        app.run()
 
 
 

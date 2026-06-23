@@ -48,22 +48,22 @@ class Plant(ABC):
 
 class Orchid(Plant):
    def grow(self):
-    self.health += 2
+    self.health = min(100, self.health + 2)
     self.add_coins(2)
 
 class Strawberry(Plant):
    def grow(self):
-    self.health += 3
+    self.health =min(100, self.health + 3)
     self.add_coins(3)
 
 class Bonsai(Plant):
    def grow(self):
-    self.health += 1
+    self.health = min(100, self.health + 1)
     self.add_coins(1)
 
 class JadeVine(Plant):
    def grow(self):
-    self.health += 4
+    self.health = min(100, self.health + 4)
     self.add_coins(4)
 
 plants = [
