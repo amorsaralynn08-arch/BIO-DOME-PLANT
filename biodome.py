@@ -27,18 +27,24 @@ class BioDome:
             foreground = "#556B2F",
         )
         self.stats_label.pack(pady=10)
-       
+
+        self.plant_buttons =[]
         for plant_class , name in self.plants:
-            
-         tk.Button(
-         self.root,
-         text=name,
-         command=lambda pc=plant_class, n=name: self.choose_plant(pc, n)
-          ).pack(pady=10)
+         button = tk.Button(
+        self.root,
+        text=name,
+        command=lambda pc=plant_class, n=name: self.choose_plant(pc, n)
+    )
+         button.pack(pady=5)
+         self.plant_buttons.append(button)
+         
 
 
     def choose_plant(self, plant_class, name):
       self.current_plant = plant_class(name)
+
+      for button in self.plant_buttons:
+          button.pack_forget()
       self.update_stats()
 
 
