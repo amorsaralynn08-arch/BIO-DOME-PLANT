@@ -50,21 +50,25 @@ class Orchid(Plant):
    def grow(self):
     self.health = min(100, self.health + 2)
     self.add_coins(2)
+    self.ideal_temp = 28
 
 class Strawberry(Plant):
    def grow(self):
     self.health =min(100, self.health + 3)
     self.add_coins(3)
+    self.ideal_temp = 20
 
 class Bonsai(Plant):
    def grow(self):
     self.health = min(100, self.health + 1)
     self.add_coins(1)
+    self.ideal_temp = 24
 
 class JadeVine(Plant):
    def grow(self):
     self.health = min(100, self.health + 4)
     self.add_coins(4)
+    self.ideal_temp = 30
 
 plants = [
     Orchid("Orchid"),
