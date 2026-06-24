@@ -117,6 +117,7 @@ class BioDome:
 
     def choose_plant(self, plant_class, name):
       self.current_plant = plant_class(name)
+      self.game_loop()
       theme = self.plant_themes.get(name , "white")
       self.root.config(bg=theme)
       self.title_label.config(bg=theme)
@@ -183,14 +184,7 @@ class BioDome:
                 color = "red"
 
 
-        self.plant_label.config(
-        text=
-        f"PLANT\n\n"
-        f"Name: {self.current_plant.name}\n"
-        f"Health: {self.current_plant.health}\n"
-        f"Level: {self.current_plant.level}\n"
-        f"Coins: {self.current_plant.coins}"
-    )
+       
         if self.current_plant.moisture <= 20:
          moisture_status = "Dry"
 
@@ -227,6 +221,34 @@ class BioDome:
         f"{overal_status}",
         fg = color
     )
+        if self.dome_temperature < self.outside_temperature:
+            self.dome_temperature += 1
+        elif self.dome_temperature > self.outside_temperature:
+            self.dome_temperature -= 1 
+
+        if status == "Comfortable" and moisture_status == "Good":
+            self.current_plant.health = min(100, self.current_plant.health + 1 )
+        else:
+            self.current_plant.health = max(0 , self.current_plant.health - 1)
+
+        self.plant_label.config(
+        text=
+        f"PLANT\n\n"
+        f"Name: {self.current_plant.name}\n"
+        f"Health: {self.current_plant.health}\n"
+        f"Level: {self.current_plant.level}\n"
+        f"Coins: {self.current_plant.coins}"
+    )
+
+
+    
+    def game_loop(self):
+        if self.current_plant:
+            self.current_plant.moisture = max(0 , self.current_plant.moisture - 1)
+            self.update_stats()
+            self.root.after(10000 , self.game_loop)
+
+
                     
         
     def go_home(self):
@@ -246,9 +268,7 @@ class BioDome:
         self.plant_frame.pack_forget()
         self.environment_frame.pack_forget()
         self.status_frame.pack_forget()
-        self.plant_frame.pack_forget()
-        self.environment_frame.pack_forget()
-        self.status_frame.pack_forget()
+        
   
   
   
@@ -263,6 +283,7 @@ class BioDome:
          
 
     def run(self):
+        
         self.root.mainloop()
 
 if __name__ == "__main__":
