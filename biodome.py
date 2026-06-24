@@ -1,9 +1,11 @@
 import tkinter as tk
+from tkinter import ttk
 from plant import (Orchid , Strawberry , Bonsai , JadeVine   )
 
 class BioDome:
     def __init__(self):
         self.root = tk.Tk()
+        self.style = ttk.Style()
         self.root.title("Bio Dome Plant")
         self.root.geometry("700x650")
         
@@ -29,6 +31,27 @@ class BioDome:
             self.root,
             relief="solid",
             bd=2
+        )
+
+        self.health_bar = ttk.Progressbar(
+            self.plant_frame,
+            orient="horizontal",
+            length=250,
+            mode="determinate"
+        )
+        self.health_text = tk.Label(
+            self.plant_frame,
+            text = "Health : 100%"
+        )
+        self.xp_bar = ttk.Progressbar(
+            self.plant_frame,
+            orient="horizontal",
+            length=250,
+            mode="determinate"
+        )
+        self.xp_text = tk.Label(
+            self.plant_frame,
+            text = "XP: 0/50"
         )
       
         
@@ -130,6 +153,10 @@ class BioDome:
       self.plant_frame.config(bg=theme)
       self.environment_frame.config(bg=theme)
       self.status_frame.config(bg=theme)
+      self.health_text.pack()
+      self.health_bar.pack(pady=5)
+      self.xp_text.pack()
+      self.xp_bar.pack(pady=5)
     
       self.title_label.config(
           text = f"{self.current_plant.name} Dashboard"
@@ -227,7 +254,7 @@ class BioDome:
     )
         if status == "Comfortable" and moisture_condition == "Good":
             overal_status = "Healthy"
-        elif status == "Critical" or moisture_condition in "Critical":
+        elif status == "Critical" or moisture_condition == "Critical":
             overal_status = "Critical"
         else:
             overal_status = "Needs Attention"
@@ -236,6 +263,10 @@ class BioDome:
         f"{overal_status}",
         fg = color
     )
+        self.health_bar["value"] = self.current_plant.health
+        self.health_text.config(
+            text = f"Health:{self.current_plant.health}%"
+        )
         if self.dome_temperature < self.outside_temperature:
             self.dome_temperature += 1
         elif self.dome_temperature > self.outside_temperature:
@@ -248,6 +279,12 @@ class BioDome:
 
             if self.current_plant.xp >= self.current_plant.level * 50:
                 self.current_plant.level += 1
+
+            current_xp = self.current_plant.xp % 50
+            self.xp_bar["value"] = current_xp * 2
+            self.xp_text.config(
+                text = f"XP:{current_xp}/50"
+            )
                 
         else:
             self.current_plant.health = max(0 , self.current_plant.health - 1)
@@ -263,7 +300,7 @@ class BioDome:
         f"Health: {self.current_plant.health}\n"
         f"Level: {self.current_plant.level}\n"
         f"Coins: {self.current_plant.coins}\n"
-        f"XP:{self.current_plant.xp}"
+        f"XP:{self.current_plant.xp}\n"
         f"Next Level {self.current_plant.level * 50 } XP"
     )
 
