@@ -7,6 +7,12 @@ class BioDome:
         self.root.title("Bio Dome Plant")
         self.root.geometry("500x500")
         self.current_plant = None
+        self.plant_themes = {
+        "Royal Orchid": "#E6E6FA",
+        "Wild Strawberry": "#FFE4E1",
+        "Mini Bonsai": "#98FB98",
+        "Jade Vine": "#AFEEEE"
+}
         self.outside_temperature = 28
         self.dome_temperature = 21
         self.moisture = 50
@@ -36,6 +42,7 @@ class BioDome:
     (Bonsai, "Mini Bonsai"),
     (JadeVine, "Jade Vine")
 ]
+        
         self.title_label = tk.Label(
             self.root ,
             text = "Choose your plant",
@@ -80,20 +87,32 @@ class BioDome:
     
 
     def water_plant(self):
-        self.moisture = max(100 ,self.moisture + 1 )
+        self.moisture = min(100 ,self.moisture + 1 )
         self.update_stats()
     
     def vent_plant(self):
-        self.dome_temperatue -= 2
+        self.dome_temperature -= 2
         self.update_stats()
        
     def heat_plant(self):
-        self.dome_temperatue += 2
+        self.dome_temperature += 2
         self.update_stats()
        
 
 
     def update_stats(self):
+        difference = abs(
+        self.dome_temperature -
+        self.current_plant.ideal_temp
+        )
+        if difference < 2 :
+                status = "Comfortable"
+        elif difference < 5:
+                status =  "Needs Attention"
+        else:
+                status = "Critical"
+
+
         self.stats_label.config(
             text = 
             f"Name: {self.current_plant.name}\n"
@@ -101,23 +120,13 @@ class BioDome:
             f"Level:{self.current_plant.level}\n"
             f"Coins:{self.current_plant.coins}\n"
             f"Outside Temp: {self.outside_temperature}°C\n"
-            f"Bio-Dome Temp: {self.temperature}°C\n"
+            f"Bio-Dome Temp: {self.dome_temperature}°C\n"
             f"Moisture: {self.moisture}%\n"
-            f"Ideal Temp: {self.current_plant.ideal_temp}°C"
+            f"Ideal Temp: {self.current_plant.ideal_temp}°C\n"
             f"Status:{status}"
 
         )
-        difference = abs
-        (self.dome_temperature -
-        self.current_plant.ideal_temp
-        )
-        if difference <= 2 :
-            status = "Comfortable"
-        elif difference <= 5:
-            status =  "Needs Attention"
-        else:
-            status = "Critical"
-
+        
      
     def go_home(self):
         self.current_plant = None
