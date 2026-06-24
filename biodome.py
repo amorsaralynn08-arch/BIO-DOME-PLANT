@@ -7,6 +7,9 @@ class BioDome:
         self.root.title("Bio Dome Plant")
         self.root.geometry("500x500")
         self.current_plant = None
+        self.outside_temperature = 28
+        self.dome_temperature = 21
+        self.moisture = 50
         self.home_button = tk.Button(
             self.root,
             text = "Home",
@@ -78,7 +81,11 @@ class BioDome:
             f"Name: {self.current_plant.name}\n"
             f"Health:{self.current_plant.health}\n"
             f"Level:{self.current_plant.level}\n"
-            f"Coins:{self.current_plant.coins}"
+            f"Coins:{self.current_plant.coins}\n"
+            f"Outside Temp: {self.outside_temperature}°C\n"
+            f"Bio-Dome Temp: {self.temperature}°C\n"
+            f"Moisture: {self.moisture}%\n"
+            f"Ideal Temp: {self.current_plant.ideal_temp}°C"
 
         )
 
