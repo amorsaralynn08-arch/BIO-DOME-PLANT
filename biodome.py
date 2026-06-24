@@ -6,6 +6,19 @@ class BioDome:
     def __init__(self):
         self.root = tk.Tk()
         self.style = ttk.Style()
+        self.style.theme_use("clam")
+        self.style.configure(
+            "OlivePink.Horizontal.TProgressbar",
+            background = "#FF69B4",
+            troughcolor ="#B5B8A3",
+            thickness = 20
+        )
+        self.style.configure(
+            "PinkOlive.Horizontal.TProgressbar",
+            background = "#228B22",
+            troughcolor = "#B5B8A3",
+            thickness = 20
+        )
         self.root.title("Bio Dome Plant")
         self.root.geometry("700x650")
         
@@ -37,7 +50,8 @@ class BioDome:
             self.plant_frame,
             orient="horizontal",
             length=250,
-            mode="determinate"
+            mode="determinate",
+            style="OlivePink.Horizontal.TProgressbar"
         )
         self.health_text = tk.Label(
             self.plant_frame,
@@ -47,7 +61,8 @@ class BioDome:
             self.plant_frame,
             orient="horizontal",
             length=250,
-            mode="determinate"
+            mode="determinate",
+            style="PinkOlive.Horizontal.TProgressbar"
         )
         self.xp_text = tk.Label(
             self.plant_frame,
