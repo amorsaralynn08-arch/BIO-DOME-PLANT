@@ -45,9 +45,13 @@ class BioDome:
             relief="solid",
             bd=2
         )
+        self.progress_frame = tk.Frame(self.root)
+        self.progress_frame.pack(pady=10)
+
+        self.button_frame = tk.Frame(self.root)
 
         self.health_bar = ttk.Progressbar(
-            self.plant_frame,
+            self.progress_frame,
             orient="horizontal",
             length=250,
             mode="determinate",
@@ -58,7 +62,7 @@ class BioDome:
             text = "Health : 100%"
         )
         self.xp_bar = ttk.Progressbar(
-            self.plant_frame,
+            self.progress_frame,
             orient="horizontal",
             length=250,
             mode="determinate",
@@ -68,6 +72,9 @@ class BioDome:
             self.plant_frame,
             text = "XP: 0/50"
         )
+
+        self.health_bar.pack(side= "left", pady= 10 , padx =5)
+        self.xp_bar.pack(side ="left" , pady = 10  , padx = 5)
       
         
 
@@ -145,6 +152,7 @@ class BioDome:
             text="Status",
             font=("Arial", 14, "bold")
         )
+        
 
         
 
@@ -158,6 +166,24 @@ class BioDome:
     )
          button.pack(pady=5)
          self.plant_buttons.append(button)
+
+         self.button_frame.pack(side="bottom", pady=20)
+
+        self.water_button.pack(in_=self.button_frame,
+                       side="left",
+                       padx=10)
+
+        self.heat_button.pack(in_=self.button_frame,
+                      side="left",
+                      padx=10)
+
+        self.vent_button.pack(in_=self.button_frame,
+                      side="left",
+                      padx=10)
+
+        self.home_button.pack(in_=self.button_frame,
+                      side="left",
+                      padx=10)
          
 
 
@@ -176,11 +202,7 @@ class BioDome:
       self.plant_frame.config(bg=theme)
       self.environment_frame.config(bg=theme)
       self.status_frame.config(bg=theme)
-      self.health_text.pack()
-      self.health_bar.pack(pady=5)
-      self.xp_text.pack()
-      self.xp_bar.pack(pady=5)
-    
+      
       self.title_label.config(
           text = f"{self.current_plant.name} Dashboard"
       )
@@ -199,10 +221,7 @@ class BioDome:
       self.environment_label.pack(pady=10 , padx = 10)
 
       self.status_label.pack(pady=10 , padx = 10)
-      self.water_button.pack(pady=5)
-      self.heat_button.pack(pady=5)
-      self.vent_button.pack(pady=5)
-      self.home_button.pack(pady=10)
+      
 
     
 
