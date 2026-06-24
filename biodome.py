@@ -12,6 +12,18 @@ class BioDome:
             text = "Home",
             command = self.go_home
         )
+        self.water_button = tk.Button(
+            self.root ,
+            text = "water"
+        )
+        self.heat_button = tk.Button(
+            self.root ,
+            text = "Heat"
+        )
+        self.vent_button = tk.Button(
+            self.root ,
+            text = "Ventilate"
+        )
         self.plants = [
     (Orchid, "Royal Orchid"),
     (Strawberry, "Wild Strawberry"),
@@ -54,6 +66,9 @@ class BioDome:
       for button in self.plant_buttons:
           button.pack_forget()
       self.update_stats()
+      self.water_button.pack(pady=5)
+      self.heat_button.pack(pady=5)
+      self.vent_button.pack(pady=5)
       self.home_button.pack(pady=10)
 
 
@@ -70,6 +85,10 @@ class BioDome:
      
     def go_home(self):
         self.current_plant = None
+        
+        self.water_button.pack_forget()
+        self.heat_button.pack_forget()
+        self.vent_button.pack_forget()
         self.home_button.pack_forget()
 
         for button in self.plant_buttons:
