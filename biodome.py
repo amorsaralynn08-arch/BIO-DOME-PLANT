@@ -87,22 +87,30 @@ class BioDome:
         self.home_button = tk.Button(
             self.root,
             text = "Home",
-            command = self.go_home
+            command = self.go_home,
+            bg="#228B22",
+            
         )
         self.water_button = tk.Button(
             self.root ,
             text = "water",
-            command = self.water_plant
+            command = self.water_plant,
+            bg="lightgreen",
+            activebackground="green"
         )
         self.heat_button = tk.Button(
             self.root ,
             text = "Heat",
-            command = self.heat_plant
+            command = self.heat_plant,
+            bg="lightgreen",
+            activebackground="green"
         )
         self.vent_button = tk.Button(
             self.root ,
             text = "Ventilate",
-            command = self.vent_plant
+            command = self.vent_plant,
+            bg="lightgreen",
+            activebackground="green"
         )
         self.plants = [
     (Orchid, "Royal Orchid"),
@@ -176,6 +184,9 @@ class BioDome:
       self.title_label.config(
           text = f"{self.current_plant.name} Dashboard"
       )
+      self.water_button.config(state = "normal")
+      self.heat_button.config(state = "normal")
+      self.vent_button.config(state = "normal")
       
 
 
@@ -318,6 +329,11 @@ class BioDome:
         f"XP:{self.current_plant.xp}\n"
         f"Next Level {self.current_plant.level * 50 } XP"
     )
+        
+        if self.current_plant.health <= 0:
+            self.water_button.config(state = "disabled")
+            self.heat_button.config(state = "disabled")
+            self.vent_button.config(state = "disabled")
 
 
     
