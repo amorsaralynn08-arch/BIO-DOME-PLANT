@@ -6,6 +6,7 @@ class Plant(ABC):
   self.health = 100
   self.level = 1
   self.coins = 0
+  self.moisture = 50
 
  @abstractmethod
  def grow(self):
