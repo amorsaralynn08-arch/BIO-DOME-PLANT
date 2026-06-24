@@ -244,8 +244,14 @@ class BioDome:
         if status == "Comfortable" and moisture_condition == "Good":
             self.current_plant.health = min(100, self.current_plant.health + 1 )
             self.current_plant.coins += 1
+
+            if self.current_plant.coins >= 50:
+                self.current_plant.level += 1
+                self.current_plant.coins = 0
         else:
             self.current_plant.health = max(0 , self.current_plant.health - 1)
+
+            
 
         self.plant_label.config(
         text=
@@ -262,7 +268,7 @@ class BioDome:
         if self.current_plant:
             self.current_plant.moisture = max(0 , self.current_plant.moisture - 1)
             self.update_stats()
-            self.root.after(10000 , self.game_loop)
+            self.root.after(1000 , self.game_loop)
 
 
                     
