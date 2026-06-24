@@ -243,6 +243,7 @@ class BioDome:
 
         if status == "Comfortable" and moisture_condition == "Good":
             self.current_plant.health = min(100, self.current_plant.health + 1 )
+            self.current_plant.coins += 1
         else:
             self.current_plant.health = max(0 , self.current_plant.health - 1)
 
