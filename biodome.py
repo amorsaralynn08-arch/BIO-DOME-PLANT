@@ -49,32 +49,43 @@ class BioDome:
         self.progress_frame.pack(pady=10)
 
         self.button_frame = tk.Frame(self.root)
+        self.health_frame = tk.Frame(self.progress_frame)
+        self.xp_frame = tk.Frame(self.progress_frame)
 
         self.health_bar = ttk.Progressbar(
-            self.progress_frame,
+            self.health_frame,
             orient="horizontal",
             length=250,
             mode="determinate",
             style="OlivePink.Horizontal.TProgressbar"
         )
         self.health_text = tk.Label(
-            self.plant_frame,
+            self.health_frame,
             text = "Health : 100%"
         )
         self.xp_bar = ttk.Progressbar(
-            self.progress_frame,
+            self.xp_frame,
             orient="horizontal",
             length=250,
             mode="determinate",
             style="PinkOlive.Horizontal.TProgressbar"
         )
         self.xp_text = tk.Label(
-            self.plant_frame,
+            self.xp_frame,
             text = "XP: 0/50"
         )
 
-        self.health_bar.pack(side= "left", pady= 10 , padx =5)
-        self.xp_bar.pack(side ="left" , pady = 10  , padx = 5)
+        self.health_text.pack()
+        self.health_bar.pack()
+
+        self.xp_text.pack()
+        self.xp_bar.pack()
+
+        self.health_frame.pack(side="left", padx=10)
+        self.xp_frame.pack(side="left", padx=10)
+        
+        self.progress_frame.pack_forget()
+        self.button_frame.pack_forget()
       
         
 
@@ -167,7 +178,8 @@ class BioDome:
          button.pack(pady=5)
          self.plant_buttons.append(button)
 
-         self.button_frame.pack(side="bottom", pady=20)
+         
+         
 
         self.water_button.pack(in_=self.button_frame,
                        side="left",
@@ -184,6 +196,10 @@ class BioDome:
         self.home_button.pack(in_=self.button_frame,
                       side="left",
                       padx=10)
+        self.water_button.pack_forget()
+        self.heat_button.pack_forget()
+        self.vent_button.pack_forget()
+        self.home_button.pack_forget()
          
 
 
@@ -196,12 +212,20 @@ class BioDome:
       self.plant_label.config(bg=theme)
       self.environment_label.config(bg=theme)
       self.status_label.config(bg=theme)
+      self.progress_frame.pack(pady=10)
+      
+      self.button_frame.pack(side="bottom", pady=20)
       self.plant_frame.pack(fill="x", padx=20, pady=5)
       self.environment_frame.pack(fill="x", padx=20, pady=5)
       self.status_frame.pack(fill="x", padx=20, pady=5)
       self.plant_frame.config(bg=theme)
       self.environment_frame.config(bg=theme)
       self.status_frame.config(bg=theme)
+      self.water_button.pack(side = "left" ,padx =5 )
+      self.heat_button.pack(side = "left" ,padx =5 )
+      self.vent_button.pack(side = "left" ,padx =5 )
+      self.home_button.pack(side = "left" ,padx =5 )
+      self.button_frame.pack(side="bottom", pady=20)
       
       self.title_label.config(
           text = f"{self.current_plant.name} Dashboard"
@@ -347,7 +371,10 @@ class BioDome:
         f"Coins: {self.current_plant.coins}\n"
         f"XP:{self.current_plant.xp}\n"
         f"Next Level {self.current_plant.level * 50 } XP"
+
     )
+        
+
         
         if self.current_plant.health <= 0:
             self.water_button.config(state = "disabled")
