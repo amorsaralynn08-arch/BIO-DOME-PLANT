@@ -173,6 +173,7 @@ class BioDome:
         self.dome_temperature -
         self.current_plant.ideal_temp
         )
+       
         if difference < 2 :
                 status = "Comfortable"
                 color = "green"
@@ -183,6 +184,19 @@ class BioDome:
                 status = "Critical"
                 color = "red"
 
+        moisture_difference = abs(
+       self.current_plant.moisture -
+       self.current_plant.ideal_moisture
+        )
+        if moisture_difference <= 10:
+         moisture_condition = "Good"
+
+        elif moisture_difference <= 20:
+         moisture_condition = "Needs Attention"
+
+        else:
+         moisture_condition = "Critical"
+ 
 
        
         if self.current_plant.moisture <= 20:
@@ -208,11 +222,12 @@ class BioDome:
         f"Bio-Dome Temp: {self.dome_temperature}°C\n"
         f"Moisture: {self.current_plant.moisture}%\n"
         f"Moisture Status: {moisture_status}\n"
+        f"Ideal Moisture: {self.current_plant.ideal_moisture}%\n"
         f"Ideal Temp: {self.current_plant.ideal_temp}°C"
     )
-        if status == "Comfortable" and moisture_status == "Good":
+        if status == "Comfortable" and moisture_condition == "Good":
             overal_status = "Healthy"
-        elif status == "Critical" or moisture_status in ["Dry", "Overwatered"]:
+        elif status == "Critical" or moisture_condition in ["Dry", "Overwatered"]:
             overal_status = "Critical"
         else:
             overal_status = "Needs Attention"

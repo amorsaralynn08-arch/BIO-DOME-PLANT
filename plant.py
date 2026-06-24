@@ -51,6 +51,7 @@ class Orchid(Plant):
    def __init__(self, name):
         super().__init__(name)
         self.ideal_temp = 28
+        self.ideal_moisture = 40
 
 
    def grow(self):
@@ -61,6 +62,7 @@ class Strawberry(Plant):
    def __init__(self, name):
         super().__init__(name)
         self.ideal_temp = 20
+        self.ideal_moisture = 50
     
 
    def grow(self):
@@ -71,6 +73,7 @@ class Bonsai(Plant):
    def __init__(self, name):
         super().__init__(name)
         self.ideal_temp = 24
+        self.ideal_moisture = 62
 
 
    def grow(self):
@@ -81,6 +84,7 @@ class JadeVine(Plant):
    def __init__(self, name):
         super().__init__(name)
         self.ideal_temp = 30
+        self.ideal_moisture = 45
 
 
    def grow(self):
