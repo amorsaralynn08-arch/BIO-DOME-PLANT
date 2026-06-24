@@ -17,15 +17,18 @@ class BioDome:
         )
         self.water_button = tk.Button(
             self.root ,
-            text = "water"
+            text = "water",
+            command = self.water_plant
         )
         self.heat_button = tk.Button(
             self.root ,
-            text = "Heat"
+            text = "Heat",
+            command = self.heat_plant
         )
         self.vent_button = tk.Button(
             self.root ,
-            text = "Ventilate"
+            text = "Ventilate",
+            command = self.vent_plant
         )
         self.plants = [
     (Orchid, "Royal Orchid"),
@@ -74,6 +77,21 @@ class BioDome:
       self.vent_button.pack(pady=5)
       self.home_button.pack(pady=10)
 
+    
+
+    def water_plant(self):
+        self.moisture = max(100 ,self.moisture + 1 )
+        self.update_stats()
+    
+    def vent_plant(self):
+        self.dome_temperatue -= 2
+        self.update_stats()
+       
+    def heat_plant(self):
+        self.dome_temperatue += 2
+        self.update_stats()
+       
+
 
     def update_stats(self):
         self.stats_label.config(
@@ -86,8 +104,19 @@ class BioDome:
             f"Bio-Dome Temp: {self.temperature}°C\n"
             f"Moisture: {self.moisture}%\n"
             f"Ideal Temp: {self.current_plant.ideal_temp}°C"
+            f"Status:{status}"
 
         )
+        difference = abs
+        (self.dome_temperature -
+        self.current_plant.ideal_temp
+        )
+        if difference <= 2 :
+            status = "Comfortable"
+        elif difference <= 5:
+            status =  "Needs Attention"
+        else:
+            status = "Critical"
 
      
     def go_home(self):
