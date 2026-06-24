@@ -227,7 +227,7 @@ class BioDome:
     )
         if status == "Comfortable" and moisture_condition == "Good":
             overal_status = "Healthy"
-        elif status == "Critical" or moisture_condition in ["Dry", "Overwatered"]:
+        elif status == "Critical" or moisture_condition in "Critical":
             overal_status = "Critical"
         else:
             overal_status = "Needs Attention"
@@ -241,7 +241,7 @@ class BioDome:
         elif self.dome_temperature > self.outside_temperature:
             self.dome_temperature -= 1 
 
-        if status == "Comfortable" and moisture_status == "Good":
+        if status == "Comfortable" and moisture_condition == "Good":
             self.current_plant.health = min(100, self.current_plant.health + 1 )
         else:
             self.current_plant.health = max(0 , self.current_plant.health - 1)
