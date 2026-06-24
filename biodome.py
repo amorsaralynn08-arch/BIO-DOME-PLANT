@@ -243,13 +243,16 @@ class BioDome:
 
         if status == "Comfortable" and moisture_condition == "Good":
             self.current_plant.health = min(100, self.current_plant.health + 1 )
+            self.current_plant.xp += 1
             self.current_plant.coins += 1
 
-            if self.current_plant.coins >= 50:
+            if self.current_plant.xp >= self.current_plant.level * 50:
                 self.current_plant.level += 1
-                self.current_plant.coins = 0
+                
         else:
             self.current_plant.health = max(0 , self.current_plant.health - 1)
+
+            
 
             
 
@@ -259,7 +262,9 @@ class BioDome:
         f"Name: {self.current_plant.name}\n"
         f"Health: {self.current_plant.health}\n"
         f"Level: {self.current_plant.level}\n"
-        f"Coins: {self.current_plant.coins}"
+        f"Coins: {self.current_plant.coins}\n"
+        f"XP:{self.current_plant.xp}"
+        f"Next Level {self.current_plant.level * 50 } XP"
     )
 
 
