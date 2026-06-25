@@ -221,11 +221,7 @@ class BioDome:
       self.home_button.pack(in_=self.button_frame,
                       side="left",
                       padx=10)
-      self.water_button.pack(side="left", ipady=5, ipadx=10, padx=5)
-      self.heat_button.pack(side="left", ipady=5, ipadx=10, padx=5)
-      self.vent_button.pack(side="left", ipady=5, ipadx=10, padx=5)
-      self.home_button.pack(side="left", ipady=5, ipadx=10, padx=5)
-      
+     
       self.title_label.config(
           text = f"{self.current_plant.name} Dashboard"
       )
@@ -408,6 +404,8 @@ class BioDome:
         self.plant_frame.pack_forget()
         self.environment_frame.pack_forget()
         self.status_frame.pack_forget()
+        self.progress_frame.pack_forget()
+        self.button_frame.pack_forget()
         
   
   
