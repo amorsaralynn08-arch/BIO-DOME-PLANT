@@ -83,7 +83,7 @@ class BioDome:
 
         self.health_frame.pack(side="left", padx=10)
         self.xp_frame.pack(side="left", padx=10)
-        
+
         self.progress_frame.pack_forget()
         self.button_frame.pack_forget()
       
@@ -149,19 +149,22 @@ class BioDome:
         self.plant_label = tk.Label(
         self.plant_frame,
         text="No plant selected",
-        font=("Arial", 12)
+        font=("Arial", 12),
+        width = 60
     )
 
         self.environment_label = tk.Label(
             self.environment_frame,
             text="Environment data",
-            font=("Arial", 12)
+            font=("Arial", 12),
+            width = 60
         )
 
         self.status_label = tk.Label(
             self.status_frame,
             text="Status",
-            font=("Arial", 14, "bold")
+            font=("Arial", 14, "bold"),
+            width =30
         )
         
 
@@ -181,25 +184,6 @@ class BioDome:
          
          
 
-        self.water_button.pack(in_=self.button_frame,
-                       side="left",
-                       padx=10)
-
-        self.heat_button.pack(in_=self.button_frame,
-                      side="left",
-                      padx=10)
-
-        self.vent_button.pack(in_=self.button_frame,
-                      side="left",
-                      padx=10)
-
-        self.home_button.pack(in_=self.button_frame,
-                      side="left",
-                      padx=10)
-        self.water_button.pack_forget()
-        self.heat_button.pack_forget()
-        self.vent_button.pack_forget()
-        self.home_button.pack_forget()
          
 
 
@@ -213,19 +197,34 @@ class BioDome:
       self.environment_label.config(bg=theme)
       self.status_label.config(bg=theme)
       self.progress_frame.pack(pady=10)
-      
-      self.button_frame.pack(side="bottom", pady=20)
-      self.plant_frame.pack(fill="x", padx=20, pady=5)
-      self.environment_frame.pack(fill="x", padx=20, pady=5)
-      self.status_frame.pack(fill="x", padx=20, pady=5)
+      self.plant_frame.pack( padx=20, pady=5)
+      self.environment_frame.pack( padx=20, pady=5)
+      self.status_frame.pack( padx=20, pady=5)
       self.plant_frame.config(bg=theme)
       self.environment_frame.config(bg=theme)
       self.status_frame.config(bg=theme)
-      self.water_button.pack(side = "left" ,padx =5 )
-      self.heat_button.pack(side = "left" ,padx =5 )
-      self.vent_button.pack(side = "left" ,padx =5 )
-      self.home_button.pack(side = "left" ,padx =5 )
-      self.button_frame.pack(side="bottom", pady=20)
+      
+      self.button_frame.pack(pady=20)
+
+      self.water_button.pack(in_=self.button_frame,
+                       side="left",
+                       padx=10)
+
+      self.heat_button.pack(in_=self.button_frame,
+                      side="left",
+                      padx=10)
+
+      self.vent_button.pack(in_=self.button_frame,
+                      side="left",
+                      padx=10)
+
+      self.home_button.pack(in_=self.button_frame,
+                      side="left",
+                      padx=10)
+      self.water_button.pack(side="left", ipady=5, ipadx=10, padx=5)
+      self.heat_button.pack(side="left", ipady=5, ipadx=10, padx=5)
+      self.vent_button.pack(side="left", ipady=5, ipadx=10, padx=5)
+      self.home_button.pack(side="left", ipady=5, ipadx=10, padx=5)
       
       self.title_label.config(
           text = f"{self.current_plant.name} Dashboard"
