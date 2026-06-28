@@ -41,11 +41,11 @@ def save_plant(plant , dome_temperature):#Saves a plants data into the database
                  plant.__class__.__name__
                  )
 )
-con.commit()
+     con.commit()
 
 def load_plant(id):
      cur.execute('''SELECT * FROM plants
-                 WHERE id = ?'''
+                 WHERE id = ?''',
                  (id,))
      
      plant_data = cur.fetchone()

@@ -99,6 +99,4 @@ plants = [
     JadeVine("Jade Vine")
 ]
 
-for plant in plants:
-    plant.grow()
-    print(plant.name, plant.health, plant.coins)
+
