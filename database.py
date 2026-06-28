@@ -25,3 +25,19 @@ cur.execute(''' CREATE TABLE IF NOT EXISTS plants
 
 con.commit() #this saves the changes to the database
 
+def save_plant(plant , dome_temperature):#Saves a plants data into the database
+     cur.execute(''' INSERT INTO plants(name , level , xp , health , moisture , temperature , coins , plant_type)
+                 VALUES (? , ? , ? , ? , ? , ? , ? , ?)
+                 plant.name
+                 plant.level
+                 plant.xp
+                 plant.health
+                 plant.moisture
+                 dome_temperature
+                 plant.coins
+                 plant.__class__.__name__
+
+''')
+con.commit()
+
+
