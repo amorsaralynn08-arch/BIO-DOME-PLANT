@@ -11,13 +11,17 @@ cur = con.cursor()
 
 #creating the db table 
 
-cur.execute(''' CREATE TABLE IF NOT EXISTs plants
-            (id INTEGER PRIMARY KEY AUTOINCREMENT
+cur.execute(''' CREATE TABLE IF NOT EXISTS plants
+            (id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT ,
             level INTEGER ,
             XP INTEGER ,
             health INTEGER ,
             moisture INTEGER ,
             temperature INTEGER ,
-            coins INTEGER
+            coins INTEGER,
+            plant_type TEXT
             )''')
+
+con.commit() #this saves the changes to the database
+
