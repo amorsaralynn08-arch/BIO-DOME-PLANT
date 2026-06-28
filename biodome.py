@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from plant import (Orchid , Strawberry , Bonsai , JadeVine   )
+from weather import get_data
 
 class BioDome:
     def __init__(self):
@@ -100,7 +101,7 @@ class BioDome:
         "Mini Bonsai": "#98FB98",
         "Jade Vine": "#AFEEEE"
 }
-        self.outside_temperature = 28
+        self.outside_temperature, self.outside_humidity = get_data()
         self.dome_temperature = 21
         self.home_button = tk.Button(
             self.root,
@@ -264,6 +265,7 @@ class BioDome:
 
 
     def update_stats(self):
+        self.outside_temperature, self.outside_humidity = get_data()
         difference = abs(
         self.dome_temperature -
         self.current_plant.ideal_temp
@@ -318,6 +320,7 @@ class BioDome:
         f"Moisture: {self.current_plant.moisture}%\n"
         f"Moisture Status: {moisture_status}\n"
         f"Ideal Moisture: {self.current_plant.ideal_moisture}%\n"
+        f"Outside Humidity: {self.outside_humidity}%\n"
         f"Ideal Temp: {self.current_plant.ideal_temp}°C"
     )
         if status == "Comfortable" and moisture_condition == "Good":
