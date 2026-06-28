@@ -40,4 +40,10 @@ def save_plant(plant , dome_temperature):#Saves a plants data into the database
 ''')
 con.commit()
 
+def load_plant():
+     cur.execute('''SELECT * FROM plants
+                 WHERE id = ?
+                 (id,)''')
+     
+
 
